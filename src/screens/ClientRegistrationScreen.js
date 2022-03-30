@@ -10,26 +10,31 @@ import {
   KeyboardAvoidingView
 } from "react-native";
 import React,{ useState } from "react";
-// import { initializeApp } from "firebase/app";
-// import { getAnalytics } from "firebase/analytics";
-// import auth from '@react-native-firebase/auth';
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import auth, { firebase } from '@react-native-firebase/auth';
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+
 
 const ClientRegistrationScreen = ({ navigation }) => {
-  // const firebaseConfig = {
-  //   apiKey: "AIzaSyAhf5Sxx7K7AGqhVlCQrtfZB4GGkdVP3ys",
-  //   authDomain: "karrozgaar.firebaseapp.com",
-  //   projectId: "karrozgaar",
-  //   storageBucket: "karrozgaar.appspot.com",
-  //   messagingSenderId: "136419108845",
-  //   appId: "1:136419108845:web:f8bd352715eaac7757e9e4",
-  //   measurementId: "G-ZYD403NDYT"
-  // };
+  const firebaseConfig = {
+    apiKey: "AIzaSyAhf5Sxx7K7AGqhVlCQrtfZB4GGkdVP3ys",
+    authDomain: "karrozgaar.firebaseapp.com",
+    projectId: "karrozgaar",
+    storageBucket: "karrozgaar.appspot.com",
+    messagingSenderId: "136419108845",
+    appId: "1:136419108845:web:f8bd352715eaac7757e9e4",
+    measurementId: "G-ZYD403NDYT"
+  };
   
-  // // Initialize Firebase
-  // const app = initializeApp(firebaseConfig);
-  // const analytics = getAnalytics(app);
-  // // const [email,SetEmail]= useState('');
-  // // const [pass,SetPassword] = useState('')
+
+  
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const analytics = getAnalytics(app);
+  // const [email,SetEmail]= useState('');
+  // const [pass,SetPassword] = useState('')
 
   // auth()
   // .createUserWithEmailAndPassword('jane.doe@example.com', 'SuperSecretPassword!')
@@ -47,6 +52,24 @@ const ClientRegistrationScreen = ({ navigation }) => {
 
   //   console.error(error);
   // });
+
+  const creteAccount = async () => {
+    const auth = getAuth();
+    // here you will proide input email and password
+createUserWithEmailAndPassword(auth, "email@gmail.com", "password")
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    console.log(userCredential);
+    // ...
+  })
+  .catch((error) => {
+    console.log(error);
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // ..
+  });
+  }
   
 
   return (
@@ -64,21 +87,21 @@ const ClientRegistrationScreen = ({ navigation }) => {
                 <TextInput
                   style={styles.input}
                   placeholder="Email Address"
-                  value={email}
-                  onChangeText={(newemail) => SetEmail(newemail)}
+                  // value={email}
+                  // onChangeText={(newemail) => SetEmail(newemail)}
                 />
                 <TextInput style={styles.input} placeholder="cnic" />
                 <TextInput
                   style={styles.input}
                   placeholder="password"
-                  value={pass}
-                  onChangeText={(newpass) => SetPassword(newpass)}
+                  // value={pass}
+                  // onChangeText={(newpass) => SetPassword(newpass)}
                 />
               </View>
 
               <TouchableOpacity
                 style={styles.registerbutton}
-                onPress={()=> Handlesignup(Email,Password)}
+                onPress={()=> creteAccount()}
           
                 
               >

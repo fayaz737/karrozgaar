@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "136419108845",
+    "project_id": "karrozgaar",
+    "storage_bucket": "karrozgaar.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:136419108845:android:107e8d18771da21957e9e4",
+        "android_client_info": {
+          "package_name": "com.karrozgaar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "136419108845-vsctqvje33elv02pr7pph638uocma71m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPqeLWTK3N3S8hNKsoy-Vaz8PXmJFBjEc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "136419108845-vsctqvje33elv02pr7pph638uocma71m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
